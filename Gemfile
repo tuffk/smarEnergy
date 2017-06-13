@@ -4,7 +4,6 @@ ruby '2.4.0'
 
 gem 'rails'
 gem 'pg'
-gem 'slim-rails'
 gem 'jbuilder', '~> 2.0'
 
 group :development, :test do
