@@ -1,7 +1,7 @@
 applications:
-- name: predix-rails-starter-app
-  memory: 256M
+- name: smart-energy
+  memory: 512M
   stack: cflinuxfs2
   buildpack: https://github.com/cloudfoundry/ruby-buildpack.git
   services:
-    - rails-postgres
+  #  - rails-postgres
