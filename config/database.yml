@@ -1,0 +1,16 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: predix-rails-starter-app_development
+
+test:
+  <<: *default
+  database: predix-rails-starter-app_test
+
+production:
+  <<: *default
+  url: <%= JSON.parse(ENV['VCAP_SERVICES']).dig('postgres', 0, 'credentials', 'uri') if Rails.env.production? %>
