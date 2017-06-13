@@ -4,13 +4,7 @@ ruby '2.4.0'
 
 gem 'rails'
 gem 'pg'
-gem 'sass-rails'
-gem 'uglifier'
-gem 'coffee-rails'
-
-gem 'jquery-rails'
 gem 'slim-rails'
-gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 
 group :development, :test do
@@ -20,7 +14,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'web-console', '~> 2.0'
   gem 'spring'
 end
 
