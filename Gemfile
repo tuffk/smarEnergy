@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 ruby '2.4.0'
 
 gem 'rails'
+gem 'rack-cors'
+
+gem 'active_model_serializers'
 gem 'pg'
 gem 'jbuilder', '~> 2.0'
 
