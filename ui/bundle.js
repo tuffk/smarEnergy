@@ -1,11 +1,4 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var angular = require('./bower_components/angular');
-require("./login/module");
-
-angular.module("main",
-    ["login"]
-);
-},{"./bower_components/angular":3,"./login/module":5}],2:[function(require,module,exports){
 /**
  * @license AngularJS v1.6.4
  * (c) 2010-2017 Google, Inc. http://angularjs.org
@@ -33378,22 +33371,48 @@ $provide.value("$locale", {
 })(window);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],3:[function(require,module,exports){
+},{}],2:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":2}],4:[function(require,module,exports){
+},{"./angular":1}],3:[function(require,module,exports){
+var angular = require('../../bower_components/angular');
+require("../signin/module");
+
+angular.module("main",
+    ["signin"]
+);
+},{"../../bower_components/angular":2,"../signin/module":5}],4:[function(require,module,exports){
+/**
+ * Created by rafaelhaber on 6/14/17.
+ */
+angular.module("signin")
+    .component("signinpage", {
+        templateUrl: '/pages/signin/template.html'
+    });
+},{}],5:[function(require,module,exports){
+/**
+ * Created by rafaelhaber on 6/14/17.
+ */
+require("../../widgets/login/module");
+
+angular.module("signin",
+    ["login"]
+);
+require("./component");
+},{"../../widgets/login/module":7,"./component":4}],6:[function(require,module,exports){
 angular.module("login")
     .component("loginComp", {
-        templateUrl: '/login/template.html',
+        templateUrl: '/widgets/login/template.html',
         controller: function ($scope) {
             $scope.executeSubmit = function() {
-                console.log($scope.$ctrl.user);
-                console.log($scope);
+                var that = $scope.$ctrl;
+                var user = that.user;
+                var pass = that.pass;
             }
         }
     });
-},{}],5:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 angular.module("login", []);
 require("./component");
-},{"./component":4}]},{},[1]);
+},{"./component":6}]},{},[3]);
