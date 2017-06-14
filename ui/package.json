@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "browserify": "^14.4.0",
+    "cors": "^2.8.3",
     "express": "^4.15.3",
     "path": "^0.12.7"
   }

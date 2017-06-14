@@ -33376,13 +33376,20 @@ require('./angular');
 module.exports = angular;
 
 },{"./angular":1}],3:[function(require,module,exports){
+/**
+ * Created by rafaelhaber on 6/14/17.
+ */
+module.exports = {
+    base_url : "http://localhost:3000"
+};
+},{}],4:[function(require,module,exports){
 var angular = require('../../bower_components/angular');
 require("../signin/module");
 
 angular.module("main",
     ["signin"]
 );
-},{"../../bower_components/angular":2,"../signin/module":5}],4:[function(require,module,exports){
+},{"../../bower_components/angular":2,"../signin/module":6}],5:[function(require,module,exports){
 /**
  * Created by rafaelhaber on 6/14/17.
  */
@@ -33390,7 +33397,7 @@ angular.module("signin")
     .component("signinpage", {
         templateUrl: '/pages/signin/template.html'
     });
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 /**
  * Created by rafaelhaber on 6/14/17.
  */
@@ -33404,22 +33411,39 @@ angular.module("signin",
     ]
 );
 require("./component");
-},{"../../widgets/login/module":7,"../../widgets/register/module":9,"./component":4}],6:[function(require,module,exports){
+},{"../../widgets/login/module":8,"../../widgets/register/module":10,"./component":5}],7:[function(require,module,exports){
+var config = require('../../config');
 angular.module("login")
     .component("loginComp", {
         templateUrl: '/widgets/login/template.html',
-        controller: function ($scope) {
+        controller: function ($scope, $http, $window) {
             $scope.executeSubmit = function() {
                 var that = $scope.$ctrl;
                 var user = that.user;
                 var pass = that.pass;
+
+                var url = config.base_url + "/login";
+                $http({
+                    url: url,
+                    method: "POST",
+                    data: {
+                        'name': user,
+                        'password': pass
+                    }
+                }).then(function(response){
+                    if (response.status == 200) {
+                        $window.location.href = '../../pages/mainpage/template.html';
+                    } else {
+                        // display an alarm
+                    }
+                });
             }
         }
     });
-},{}],7:[function(require,module,exports){
+},{"../../config":3}],8:[function(require,module,exports){
 angular.module("login", []);
 require("./component");
-},{"./component":6}],8:[function(require,module,exports){
+},{"./component":7}],9:[function(require,module,exports){
 /**
  * Created by rafaelhaber on 6/14/17.
  */
@@ -33434,7 +33458,7 @@ angular.module("register")
             }
         }
     });
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 angular.module("register", []);
 require("./component");
-},{"./component":8}]},{},[3]);
+},{"./component":9}]},{},[4]);

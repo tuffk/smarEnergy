@@ -1,0 +1,20 @@
+<h2>Energy Monitor</h2>
+
+<table class="table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Device</th>
+			<th>Energy Output</th>
+			<th>Average Energy Output</th>
+		</tr>
+	</thead>
+	<tbody ng-repeat="device in devices">
+		<tr>
+			<td>{{device.id}}</td>
+			<td>{{device.name}}</td>
+			<td>{{device.energy}}</td>
+			<td>{{device.avgEnergy}}</td>
+		</tr>
+	</tbody>
+</table>
