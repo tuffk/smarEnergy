@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en" ng-app="main">
+<head>
+    <meta charset="utf-8">
+    <title>My HTML File</title>
+    <!--<script src="bower_components/jquery/dist/jquery.min.js"></script>-->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-grid.min.css">-->
+    <!--<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />-->
+    <script src="bundle.js"></script>
+    <!--<script src="login/module.js"></script>-->
+</head>
+<body>
+<div class="container-fluid">
+    <div ng-controller="mainController">
+        <div ng-hide="id">
+            <signinpage></signinpage>
+        </div>
+        <div ng-show="id">
+            <dashboard-page></dashboard-page>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

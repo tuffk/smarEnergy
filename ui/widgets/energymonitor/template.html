@@ -1,0 +1,16 @@
+<h2>Energy Monitor</h2>
+
+<table class="table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th>Device</th>
+			<th>Energy Output</th>
+		</tr>
+	</thead>
+	<tbody ng-repeat="device in devices | orderBy: '-output'">
+		<tr>
+			<td>{{device.name}}</td>
+			<td>{{device.output}}</td>
+		</tr>
+	</tbody>
+</table>
