@@ -39,7 +39,7 @@ class DevicesController < ApplicationController
 
   # Allowed parameters
   def device_params
-    params.permit(:name, :password)
+    params.permit(:house_id, :area, :brand, :job, :resource_type)
   end
 
   # Sets model based on param +id+
