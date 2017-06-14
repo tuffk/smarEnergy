@@ -7,7 +7,6 @@ RSpec.describe HousesController, type: :controller do
     create_list(:capture, 5, device: d)
     process :show, method: :get, params: { id: h.id }
     json =  response_body
-    binding.pry
     expect(json[:energy_percentage]).to eq(100.to_f.to_s)
   end
 end
