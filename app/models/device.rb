@@ -1,3 +1,4 @@
+# +Device+ model
 class Device < ApplicationRecord
   belongs_to :house
   has_many :capture

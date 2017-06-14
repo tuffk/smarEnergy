@@ -1,3 +1,4 @@
+# +House+ model
 class House < ApplicationRecord
   belongs_to :user
   has_many :device
@@ -6,7 +7,7 @@ class House < ApplicationRecord
   def energy_total
     all = Device.where(resource_type: Device::RType::POWER, house: self)
     total = 0.0
-    unless all.nil? || all == []
+    unless all.nil? || all == [] # rubocop:disable GuardClause
       all.each do |dev|
         total += dev.capture.sum('amount')
       end
@@ -18,7 +19,7 @@ class House < ApplicationRecord
   def water_total
     all = Device.where(resource_type: Device::RType::WATER, house: self)
     total = 0.0
-    unless all.nil? || all == []
+    unless all.nil? || all == [] # rubocop:disable GuardClause
       all.each do |dev|
         total += dev.capture.sum('amount')
       end
@@ -29,8 +30,8 @@ class House < ApplicationRecord
 
   def energy_p
     total = energy_total
-    unless Device.find_by(resource_type: Device::RType::POWER).nil?
-      temp = device.where(resource_type: Device::RType::POWER)#.capture.sum('amount')
+    unless Device.find_by(resource_type: Device::RType::POWER).nil? # rubocop:disable GuardClause
+      temp = device.where(resource_type: Device::RType::POWER)
       mine = 0.0
       temp.each do |d|
         mine += d.capture.sum('amount')
@@ -41,8 +42,8 @@ class House < ApplicationRecord
 
   def water_p
     total = water_total
-    unless Device.find_by(resource_type: Device::RType::WATER).nil?
-      temp = device.where(resource_type: Device::RType::WATER)#.capture.sum('amount')
+    unless Device.find_by(resource_type: Device::RType::WATER).nil? # rubocop:disable GuardClause
+      temp = device.where(resource_type: Device::RType::WATER)
       mine = 0.0
       temp.each do |d|
         mine += d.capture.sum('amount')

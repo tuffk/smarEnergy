@@ -1,3 +1,4 @@
+# +House+ controller
 class HousesController < ApplicationController
   # filters
   before_action :set_house, only: %i[show update destroy]

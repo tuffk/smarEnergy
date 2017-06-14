@@ -1,3 +1,4 @@
+# +Captures+ controller
 class CapturesController < ApplicationController
   # filters
   before_action :set_capture, only: %i[show update destroy]
