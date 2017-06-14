@@ -4,17 +4,17 @@
 	<thead>
 		<tr>
 			<th>#</th>
-			<th>Device</th>
+			<!-- <th>Device</th> -->
 			<th>Energy Output</th>
-			<th>Average Energy Output</th>
+			<!-- <th>Average Energy Output</th> -->
 		</tr>
 	</thead>
-	<tbody ng-repeat="device in devices">
+	<tbody ng-repeat="device in devices | orderBy: '-amount'">
 		<tr>
 			<td>{{device.id}}</td>
-			<td>{{device.name}}</td>
-			<td>{{device.energy}}</td>
-			<td>{{device.avgEnergy}}</td>
+			<td>{{device.amount}}</td>
+			<!-- <td>{{device.energy}}</td> -->
+			<!-- <td>{{device.avgEnergy}}</td> -->
 		</tr>
 	</tbody>
 </table>
