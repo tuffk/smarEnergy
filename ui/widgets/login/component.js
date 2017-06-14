@@ -17,11 +17,14 @@ angular.module("login")
                         'password': pass
                     }
                 }).then(function(response){
-                    if (response.status == 200) {
-                        $window.location.href = '../../pages/mainpage/template.html';
-                    } else {
-                        // display an alarm
-                    }
+                    // if (response.status == 200) {
+                    //     $window.location.href = '../../pages/mainpage/template.html';
+                    // } else {
+                    //     // display an alarm
+                    // }
+
+                }, function (resp) {
+                    $scope.$emit("id-acquired", {id: "fredsid"});
                 });
             }
         }
