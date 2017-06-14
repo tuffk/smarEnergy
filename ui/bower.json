@@ -1,0 +1,21 @@
+{
+  "name": "webapp",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Rafael <rmh287@cornell.edu>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/tuffk/smartEnergy",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.4",
+    "bootstrap": "v4.0.0-alpha.6"
+  }
+}
