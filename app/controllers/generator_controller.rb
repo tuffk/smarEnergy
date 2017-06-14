@@ -3,10 +3,10 @@ class GeneratorController < ApplicationController
     user = User.find(params[:uid]) unless params[:uid].nil?
     house = House.find(params[:hid]) unless params[:hid].nil?
     device = Device.find(params[:did]) unless params[:did].nil?
-    loop do
+    for i in 1..10 do
       Capture.create(device: device, start: rand(1..100).minutes.ago,
                      stop: rand(1..100).minutes.from_now, amount: rand(1..500))
-      sleep(5)
+      sleep(1)
     end
   end
 end

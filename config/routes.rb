@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :houses
   resources :devices
   resources :captures
+  post '/gen', to: 'generator#generate', as: 'gen'
 end
