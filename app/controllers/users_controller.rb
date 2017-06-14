@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     if user.nil?
       render json: {}, status: :unauthorized
     else
-      render json: {}, status: :ok
+      render json: user, status: :ok
     end
   end
 

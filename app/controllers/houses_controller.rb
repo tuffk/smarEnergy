@@ -39,7 +39,7 @@ class HousesController < ApplicationController
 
   # Allowed parameters
   def house_params
-    params.permit(:name, :password)
+    params.permit(:name, :address, :area, :rooms, :user_id)
   end
 
   # Sets model based on param +id+
