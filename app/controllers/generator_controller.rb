@@ -1,3 +1,4 @@
+# +Generator+ end point
 class GeneratorController < ApplicationController
   def generate
     user = User.find(params[:uid]) unless params[:uid].nil?

@@ -1,3 +1,4 @@
+# +Devices+ controller
 class DevicesController < ApplicationController
   # filters
   before_action :set_device, only: %i[show update destroy]
