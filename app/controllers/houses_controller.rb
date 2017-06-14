@@ -1,7 +1,7 @@
 # +House+ controller
 class HousesController < ApplicationController
   # filters
-  before_action :set_house, only: %i[show update destroy]
+  before_action :set_house, only: %i[show update destroy hda]
 
   def index
     render json: House.all
@@ -13,6 +13,19 @@ class HousesController < ApplicationController
     else
       render json: @house
     end
+  end
+
+  def hda
+    devs = @house.device
+    arr = {}
+    papaya = {}
+    devs.each do |d|
+      arr['devInfo'] = d
+      total = d.capture.last
+      arr['capture'] = total
+      papaya[d.id.to_s] = arr
+    end
+    render json: papaya
   end
 
   def create
