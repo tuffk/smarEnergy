@@ -14,6 +14,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def login
+    binding.pry
+    user = User.find_by(name: user_params[:name], password: user_params[:password])
+    if user.nil?
+      render json: {}, status: :unauthorized
+    else
+      render json: {}, status: :ok
+    end
+  end
+
   def create
     user = User.new(user_params)
     if user.save
