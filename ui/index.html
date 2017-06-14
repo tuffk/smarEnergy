@@ -14,7 +14,14 @@
 </head>
 <body>
 <div class="container-fluid">
-    <dashboard-page></dashboard-page>
+    <div ng-controller="mainController">
+        <div ng-hide="id">
+            <signinpage></signinpage>
+        </div>
+        <div ng-show="id">
+            <dashboard-page></dashboard-page>
+        </div>
+    </div>
 </div>
 
 </body>

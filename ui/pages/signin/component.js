@@ -3,5 +3,10 @@
  */
 angular.module("signin")
     .component("signinpage", {
-        templateUrl: '/pages/signin/template.html'
+        templateUrl: '/pages/signin/template.html',
+        controller : function($scope) {
+            $scope.$on("id-acquired", function(info, obj) {
+                $scope.$emit("to-dashboard", obj);
+            });
+        }
     });
