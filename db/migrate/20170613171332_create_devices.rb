@@ -4,7 +4,7 @@ class CreateDevices < ActiveRecord::Migration[5.1]
       t.belongs_to :house
       t.string :area
       t.string :brand
-      t.string :type
+      t.string :job
       t.integer :resource_type
       t.timestamps
     end

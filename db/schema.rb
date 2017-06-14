@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20170613171740) do
     t.bigint "house_id"
     t.string "area"
     t.string "brand"
-    t.string "type"
+    t.string "job"
     t.integer "resource_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
