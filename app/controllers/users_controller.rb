@@ -1,3 +1,4 @@
+# +User+ controller
 class UsersController < ApplicationController
   # filters
   before_action :set_user, only: %i[show update destroy]

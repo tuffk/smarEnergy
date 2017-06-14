@@ -1,4 +1,5 @@
+# +Capture+ model
 class Capture < ApplicationRecord
   belongs_to :device
-  validates :start, :stop, :amount, presence: true
+  validates :start, :amount, presence: true
 end
