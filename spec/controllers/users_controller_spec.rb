@@ -7,7 +7,6 @@ RSpec.describe UsersController, type: :controller do
       name: u.name,
       password: u.password
     }
-    binding.pry
     expect(response.status).to eq(200)
   end
 
