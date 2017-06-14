@@ -39,7 +39,7 @@ class CapturesController < ApplicationController
 
   # Allowed parameters
   def capture_params
-    params.permit(:name, :password)
+    params.permit(:device_id, :start, :stop, :amount)
   end
 
   # Sets model based on param +id+
