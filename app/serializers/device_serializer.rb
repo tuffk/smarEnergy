@@ -1,3 +1,3 @@
 class DeviceSerializer < ActiveModel::Serializer
-  attributes :id, :area, :brand, :type, :resource_type
+  attributes :id, :area, :brand, :job, :resource_type
 end
