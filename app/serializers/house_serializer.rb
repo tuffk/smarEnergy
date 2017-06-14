@@ -1,5 +1,5 @@
 class HouseSerializer < ActiveModel::Serializer
-  attributes :id, :name, :area, :rooms, :address
+  attributes :id, :name, :area, :rooms, :address, :user_id
   attributes :energy_total, :water_total, :p_percentage, :w_percentage
 
   def energy_total

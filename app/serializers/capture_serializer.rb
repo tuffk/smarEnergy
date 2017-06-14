@@ -1,3 +1,3 @@
 class CaptureSerializer < ActiveModel::Serializer
-  attributes :id, :start, :stop, :amount
+  attributes :id, :start, :stop, :amount, :device_id
 end
