@@ -33395,12 +33395,16 @@ angular.module("signin")
  * Created by rafaelhaber on 6/14/17.
  */
 require("../../widgets/login/module");
+require("../../widgets/register/module");
 
 angular.module("signin",
-    ["login"]
+    [
+        "login",
+        "register"
+    ]
 );
 require("./component");
-},{"../../widgets/login/module":7,"./component":4}],6:[function(require,module,exports){
+},{"../../widgets/login/module":7,"../../widgets/register/module":9,"./component":4}],6:[function(require,module,exports){
 angular.module("login")
     .component("loginComp", {
         templateUrl: '/widgets/login/template.html',
@@ -33415,4 +33419,22 @@ angular.module("login")
 },{}],7:[function(require,module,exports){
 angular.module("login", []);
 require("./component");
-},{"./component":6}]},{},[3]);
+},{"./component":6}],8:[function(require,module,exports){
+/**
+ * Created by rafaelhaber on 6/14/17.
+ */
+angular.module("register")
+    .component("registerComp", {
+        templateUrl: '/widgets/register/template.html',
+        controller: function ($scope) {
+            $scope.executeSubmit = function() {
+                var that = $scope.$ctrl;
+                var user = that.user;
+                var pass = that.pass;
+            }
+        }
+    });
+},{}],9:[function(require,module,exports){
+angular.module("register", []);
+require("./component");
+},{"./component":8}]},{},[3]);
