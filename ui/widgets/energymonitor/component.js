@@ -1,24 +1,22 @@
 var config = require('../../config');
+
+var table = [
+	{name: 'TV', output: 80.0},
+	{name: 'AC-Unit', output: 165.0},
+	{name: 'Refrigerator', output: 258.0},
+	{name: 'Fan', output: 139.0},
+	{name: 'Fish Tank', output: 75.0}
+];
 angular.module("energymonitor")
     .component("energymonitorComp", {
         templateUrl: '/widgets/energymonitor/template.html',
-        controller: function ($scope, $http, $interval) {
-        	var user_id = 1;
-        	var url = config.base_url + "/captures";
-        	var posturl = config.base_url + "/gen";
+        controller: function ($scope, $interval) {
 
         	$interval(function() {
-	        	$http.get(url, []).then(function(response) {
-	    			if (response.status == 200) {
-	    				$scope.devices = response.data;
-	    				angular.forEach($scope.devices, function(value, key) {
-	    					$scope.devices[key].amount = parseInt($scope.devices[key].amount);
-	    				});
-	    			}
-	    		});
-
-
-	    		$http.post(posturl, {}, []);
-	        }, 5000);
+        		$scope.devices = table;
+        		angular.forEach($scope.devices, function(value, key) {
+        			$scope.devices[key].output *= (Math.random() * 2);
+        		})
+	        }, 2000);
         }
     });

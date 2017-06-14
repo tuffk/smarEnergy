@@ -17,6 +17,9 @@ angular.module("login")
                         'password': pass
                     }
                 }).then(function(response){
+                    console.log(response);
+                    $scope.$emit("id-acquired", {id: response.data.id});
+
                     // if (response.status == 200) {
                     //     $window.location.href = '../../pages/mainpage/template.html';
                     // } else {
@@ -24,7 +27,6 @@ angular.module("login")
                     // }
 
                 }, function (resp) {
-                    $scope.$emit("id-acquired", {id: "fredsid"});
                 });
             }
         }

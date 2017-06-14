@@ -33404,7 +33404,7 @@ angular.module("dashboard",
     ]
 );
 require("./component");
-},{"../../widgets/energymonitor/module":10,"../../widgets/homeselector/module":12,"./component":4}],6:[function(require,module,exports){
+},{"../../widgets/energymonitor/module":11,"../../widgets/homeselector/module":13,"./component":4}],6:[function(require,module,exports){
 var angular = require('../../bower_components/angular');
 require("../signin/module");
 require("../dashboard/module");
@@ -33415,15 +33415,32 @@ angular.module("main",
         "dashboard"
     ]
 );
-},{"../../bower_components/angular":2,"../dashboard/module":5,"../signin/module":8}],7:[function(require,module,exports){
+require("./controller");
+},{"../../bower_components/angular":2,"../dashboard/module":5,"../signin/module":9,"./controller":7}],7:[function(require,module,exports){
+/**
+ * Created by rafaelhaber on 6/14/17.
+ */
+angular.module("main")
+    .controller('mainController', ['$scope', function($scope) {
+        $scope.$on("to-dashboard", function (info, obj) {
+            $scope.id = obj.id;
+            // $scope.$emit("to-dashboard", obj);
+        });
+    }]);
+},{}],8:[function(require,module,exports){
 /**
  * Created by rafaelhaber on 6/14/17.
  */
 angular.module("signin")
     .component("signinpage", {
-        templateUrl: '/pages/signin/template.html'
+        templateUrl: '/pages/signin/template.html',
+        controller : function($scope) {
+            $scope.$on("id-acquired", function(info, obj) {
+                $scope.$emit("to-dashboard", obj);
+            });
+        }
     });
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 /**
  * Created by rafaelhaber on 6/14/17.
  */
@@ -33437,35 +33454,33 @@ angular.module("signin",
     ]
 );
 require("./component");
-},{"../../widgets/login/module":14,"../../widgets/register/module":16,"./component":7}],9:[function(require,module,exports){
+},{"../../widgets/login/module":15,"../../widgets/register/module":17,"./component":8}],10:[function(require,module,exports){
 var config = require('../../config');
+
+var table = [
+	{name: 'TV', output: 80.0},
+	{name: 'AC-Unit', output: 165.0},
+	{name: 'Refrigerator', output: 258.0},
+	{name: 'Fan', output: 139.0},
+	{name: 'Fish Tank', output: 75.0}
+];
 angular.module("energymonitor")
     .component("energymonitorComp", {
         templateUrl: '/widgets/energymonitor/template.html',
-        controller: function ($scope, $http, $interval) {
-        	var user_id = 1;
-        	var url = config.base_url + "/captures";
-        	var posturl = config.base_url + "/gen";
+        controller: function ($scope, $interval) {
 
         	$interval(function() {
-	        	$http.get(url, []).then(function(response) {
-	    			if (response.status == 200) {
-	    				$scope.devices = response.data;
-	    				angular.forEach($scope.devices, function(value, key) {
-	    					$scope.devices[key].amount = parseInt($scope.devices[key].amount);
-	    				});
-	    			}
-	    		});
-
-
-	    		$http.post(posturl, {}, []);
-	        }, 5000);
+        		$scope.devices = table;
+        		angular.forEach($scope.devices, function(value, key) {
+        			$scope.devices[key].output *= (Math.random() * 2);
+        		})
+	        }, 2000);
         }
     });
-},{"../../config":3}],10:[function(require,module,exports){
+},{"../../config":3}],11:[function(require,module,exports){
 angular.module("energymonitor", []);
 require("./component");
-},{"./component":9}],11:[function(require,module,exports){
+},{"./component":10}],12:[function(require,module,exports){
 /**
  * Created by rafaelhaber on 6/14/17.
  */
@@ -33481,13 +33496,13 @@ angular
 
         }
     });
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 /**
  * Created by rafaelhaber on 6/14/17.
  */
 angular.module("homeselector", []);
 require('./component');
-},{"./component":11}],13:[function(require,module,exports){
+},{"./component":12}],14:[function(require,module,exports){
 var config = require('../../config');
 angular.module("login")
     .component("loginComp", {
@@ -33507,19 +33522,24 @@ angular.module("login")
                         'password': pass
                     }
                 }).then(function(response){
-                    if (response.status == 200) {
-                        $window.location.href = '../../pages/mainpage/template.html';
-                    } else {
-                        // display an alarm
-                    }
+                    console.log(response);
+                    $scope.$emit("id-acquired", {id: response.data.id});
+
+                    // if (response.status == 200) {
+                    //     $window.location.href = '../../pages/mainpage/template.html';
+                    // } else {
+                    //     // display an alarm
+                    // }
+
+                }, function (resp) {
                 });
             }
         }
     });
-},{"../../config":3}],14:[function(require,module,exports){
+},{"../../config":3}],15:[function(require,module,exports){
 angular.module("login", []);
 require("./component");
-},{"./component":13}],15:[function(require,module,exports){
+},{"./component":14}],16:[function(require,module,exports){
 var cnfg = require("../../config");
 /**
  * Created by rafaelhaber on 6/14/17.
@@ -33535,7 +33555,7 @@ angular.module("register")
             }
         }
     });
-},{"../../config":3}],16:[function(require,module,exports){
+},{"../../config":3}],17:[function(require,module,exports){
 angular.module("register", []);
 require("./component");
-},{"./component":15}]},{},[6]);
+},{"./component":16}]},{},[6]);
