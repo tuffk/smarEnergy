@@ -5,23 +5,6 @@ require("./login/module");
 angular.module("main",
     ["login"]
 );
-
-/*
-angular.
-module('main').
-component('greetUser', {
-    template: 'Hello, {{$ctrl.user}}!',
-    controller: function GreetUserController() {
-        this.user = 'world';
-    }
-});*/
-
-/**require('login')
-
-var main = angular.module('main', [
-    'login'
-]);
- **/
 },{"./bower_components/angular":3,"./login/module":5}],2:[function(require,module,exports){
 /**
  * @license AngularJS v1.6.4
@@ -33400,10 +33383,15 @@ require('./angular');
 module.exports = angular;
 
 },{"./angular":2}],4:[function(require,module,exports){
-
 angular.module("login")
     .component("loginComp", {
-        templateUrl: '/login/template.html'
+        templateUrl: '/login/template.html',
+        controller: function ($scope) {
+            $scope.executeSubmit = function() {
+                console.log($scope.$ctrl.user);
+                console.log($scope);
+            }
+        }
     });
 },{}],5:[function(require,module,exports){
 angular.module("login", []);
